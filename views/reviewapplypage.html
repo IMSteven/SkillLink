@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC - SkillLink</title>
+<link rel="stylesheet" href="/css/reviewapplypage.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/CCC Logo 1.png" alt="CCC Logo">
+        <h1>CCC - SkillLink</h1>
+    </div>
+    <div class="nav-links">
+        <a href="#" id="F-internship">Find Internship</a>
+        <a href="#" id="P-internship">Post Internship</a>
+        <img src="/images/icons8-user-96.png" alt="User Icon" id="user-icon">
+        <img src="/images/icons8-search-150.png" alt="Search Icon" id="search-icon">
+    </div>
+</div>
+
+<div class="review-container">
+    <h2>Review Your Application</h2>
+
+    <div class="review-item">
+        <strong>Full Name:</strong> <span id="fullName"></span>
+    </div>
+    <div class="review-item">
+        <strong>Email:</strong> <span id="email"></span>
+    </div>
+    <div class="review-item">
+        <strong>Phone Number:</strong> <span id="phone"></span>
+    </div>
+    
+    <div class="review-item">
+        <strong>Resume:</strong> 
+        <span id="resumeLink"></span>
+        <button id="resumeViewButton" class="pdf-button" onclick="viewPDF('resume')">View Resume</button>
+        <div class="pdf-viewer" id="resumeViewerContainer">
+            <button class="close-viewer" onclick="closeViewer('resume')">X</button>
+            <iframe id="resumeViewer" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div class="review-item">
+        <strong>MOA:</strong>
+        <span id="moaLink"></span>
+        <button id="moaViewButton" class="pdf-button" onclick="viewPDF('moa')">View MOA</button>
+        <div class="pdf-viewer" id="moaViewerContainer">
+            <button class="close-viewer" onclick="closeViewer('moa')">X</button>
+            <iframe id="moaViewer" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div class="checkbox-container">
+        <input type="checkbox" id="termsCheckbox">
+        <label for="termsCheckbox" class="checkbox-label">I agree to the terms and conditions</label>
+    </div>
+
+    <button class="submit-button" onclick="submitApplication()">Submit Application</button>
+</div>
+
+<script>
+    // Retrieve data from localStorage and display it
+    document.getElementById('fullName').innerText = localStorage.getItem('fullName') || 'Not provided';
+    document.getElementById('email').innerText = localStorage.getItem('email') || 'Not provided';
+    document.getElementById('phone').innerText = localStorage.getItem('phone') || 'Not provided';
+
+    // Retrieve and display uploaded files if they exist
+    const resumeData = localStorage.getItem('resumeData');
+    const resumeName = localStorage.getItem('resumeName');
+    const moaData = localStorage.getItem('moaData');
+    const moaName = localStorage.getItem('moaName');
+
+    if (resumeData) {
+        document.getElementById('resumeLink').innerHTML = `<a href="${resumeData}" download="${resumeName}">Download Resume</a>`;
+    } else {
+        document.getElementById('resumeLink').innerText = 'No resume uploaded';
+    }
+
+    if (moaData) {
+        document.getElementById('moaLink').innerHTML = `<a href="${moaData}" download="${moaName}">Download MOA</a>`;
+    } else {
+        document.getElementById('moaLink').innerText = 'No MOA uploaded';
+    }
+
+    function viewPDF(type) {
+        if (type === 'resume' && resumeData) {
+            const viewer = document.getElementById('resumeViewer');
+            viewer.src = resumeData;
+            document.getElementById('resumeViewerContainer').style.display = 'block'; // Show the viewer
+        } else if (type === 'moa' && moaData) {
+            const viewer = document.getElementById('moaViewer');
+            viewer.src = moaData;
+            document.getElementById('moaViewerContainer').style.display = 'block'; // Show the viewer
+        } else {
+            alert('No document uploaded');
+        }
+    }
+
+    function closeViewer(type) {
+        if (type === 'resume') {
+            document.getElementById('resumeViewerContainer').style.display = 'none'; // Hide the viewer
+        } else if (type === 'moa') {
+            document.getElementById('moaViewerContainer').style.display = 'none'; // Hide the viewer
+        }
+    }
+
+    function submitApplication() {
+        if (!document.getElementById('termsCheckbox').checked) {
+            alert('You must agree to the terms and conditions before submitting your application.');
+            return;
+        }
+        localStorage.clear();
+        alert('Your application has been submitted successfully!');
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

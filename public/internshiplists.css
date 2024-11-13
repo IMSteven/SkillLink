@@ -1,0 +1,190 @@
+@font-face {
+    font-family: 'Lexend Deca-Regular';
+    src: url('/fonts/Lexend_Deca/static/LexendDeca-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Londrina Solid-Regular';
+    src: url('/fonts/Londrina_Solid/LondrinaSolid-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Londrina Solid-Light';
+    src: url('/fonts/Londrina_Solid/LondrinaSolid-Light.ttf');
+}
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/images/CCC BG.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Londrina Solid', sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: -1;
+    pointer-events: none;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 50px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    top: 0;
+    z-index: 1;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar .logo h1 {
+    font-size: 20px;
+    font-family: 'Londrina Solid-Regular';
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #0b1f53;
+    margin: 0;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center; /* Aligns links and icon vertically */
+    gap: 20px; /* Adjust the gap if necessary */
+}
+
+
+.navbar .nav-links a {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Lexend Deca-Regular';
+    color: #0b1f53;
+}
+    #F-internship{
+        background-color: #0b1f53;
+        color: #ffffff;
+        padding: 30px 5px 30px 5px;
+        border-radius: 3px;
+    }
+    #P-internship{
+        color: #0b1f53;
+        padding: 30px 5px 30px 5px;
+    }
+    #user-icon {
+        height: 20px; /* Adjust size as needed */
+        margin-left: 10px; /* Space between icon and the link */
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    #search-icon {
+        height: 20px; /* Adjust size as needed */
+        margin-left: 10px; /* Space between icon and the link */
+        cursor: pointer;
+        vertical-align: middle;
+    }
+
+/* Container for the cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid layout */
+    gap: 40px; /* Space between cards */
+    padding: 10px; /* Padding around the container */
+    max-width: 1000px;
+    position: relative;
+    z-index: 0; /* Ensure card-container appears below the navbar */
+    margin-top: 80px; /* Add space below the navbar */
+}
+
+/* Styling for individual cards */
+.card {
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Inner padding for content */
+    text-align: center; /* Center the text */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #0b1f53; /* Dark blue color for the title */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555555; /* Gray color for the company info */
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.card .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555555; /* Icon and text color */
+}
+
+.card .info .icon {
+    font-size: 16px; /* Adjust icon size */
+}
+
+/* Styling for the button */
+.card button {
+    background-color: #0b1f53; /* Dark blue color */
+    color: #ffffff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners for button */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #162054; /* Darker blue on hover */
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC - SkillLink</title>
+<link rel="stylesheet" href="/editinternprofile.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/CCC Logo 1.png" alt="CCC Logo">
+        <h1>CCC - SkillLink</h1>
+    </div>
+    <div class="nav-links">
+        <a href="#" id="F-internship">Find Internship</a>
+        <a href="#" id="P-internship">Post Internship</a>
+        <img src="/images/icons8-user-96.png" alt="User Icon" id="user-icon">
+        <img src="/images/icons8-search-150.png" alt="Search Icon" id="search-icon">
+    </div>
+</div>
+
+<div class="container">
+    <form id="profileForm">
+      <!-- Profile Photo Upload -->
+      <div class="profile-photo">
+        <div class="photo-preview" id="photo-preview">
+          <span>Upload Photo</span>
+        </div>
+        <label class="upload-button">
+          <input type="file" id="photo-upload" accept="image/png, image/jpeg" onchange="previewPhoto()">
+          Upload Your Photo
+        </label>
+      </div>
+  
+      <!-- Personal Information Section -->
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="full-name" disabled>
+        <button type="button" onclick="enableEditing('full-name')">Edit</button>
+      </div>
+  
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" id="contact-number" disabled>
+        <button type="button" onclick="enableEditing('contact-number')">Edit</button>
+      </div>
+  
+      <div class="form-group">
+        <label>CCC Email Account</label>
+        <input type="email" id="email" disabled>
+        <button type="button" onclick="enableEditing('email')">Edit</button>
+      </div>
+  
+      <!-- Program and Year Level Section -->
+      <div class="form-group">
+        <label>Program</label>
+        <select id="program" disabled>
+          <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
+          <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
+          <option value="Bachelor of Science in Electronics Engineering">Bachelor of Science in Electronics Engineering</option>
+        </select>
+        <button type="button" onclick="enableEditing('program')">Edit</button>
+      </div>
+  
+      <div class="form-group">
+        <label>Year Level</label>
+        <select id="year-level" disabled>
+          <option value="1st Year">1st Year</option>
+          <option value="2nd Year">2nd Year</option>
+          <option value="3rd Year">3rd Year</option>
+          <option value="4th Year">4th Year</option>
+        </select>
+        <button type="button" onclick="enableEditing('year-level')">Edit</button>
+      </div>
+  
+      <!-- Update Profile Button -->
+      <button type="button" class="submit-button" onclick="saveProfile()">Update Profile</button>
+    </form>
+  </div>
+
+<script>
+    // Load data from localStorage and populate fields on page load
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('full-name').value = localStorage.getItem('fullName') || "";
+    document.getElementById('contact-number').value = localStorage.getItem('contactNumber') || "";
+    document.getElementById('email').value = localStorage.getItem('email') || "";
+    document.getElementById('program').value = localStorage.getItem('program') || "";
+    document.getElementById('year-level').value = localStorage.getItem('yearLevel') || "";
+  
+    const photoDataUrl = localStorage.getItem('photo');
+    if (photoDataUrl) {
+      document.getElementById('photo-preview').innerHTML = `<img src="${photoDataUrl}" alt="Profile Photo">`;
+    }
+});
+  
+// Enable editing for specific field
+function enableEditing(fieldId) {
+    document.getElementById(fieldId).disabled = false;
+}
+  
+// Save updated profile data to localStorage
+function saveProfile() {
+    const fullName = document.getElementById('full-name').value;
+    const contactNumber = document.getElementById('contact-number').value;
+    const email = document.getElementById('email').value;
+    const program = document.getElementById('program').value;
+    const yearLevel = document.getElementById('year-level').value;
+  
+    // Save updated data to localStorage
+    localStorage.setItem('fullName', fullName);
+    localStorage.setItem('contactNumber', contactNumber);
+    localStorage.setItem('email', email);
+    localStorage.setItem('program', program);
+    localStorage.setItem('yearLevel', yearLevel);
+  
+    alert("Profile updated successfully!");
+}
+  
+// Preview the uploaded profile photo and save it in localStorage
+function previewPhoto() {
+    const file = document.getElementById('photo-upload').files[0];
+    const reader = new FileReader();
+  
+    reader.onload = function(e) {
+      document.getElementById('photo-preview').innerHTML = `<img src="${e.target.result}" alt="Profile Photo">`;
+      localStorage.setItem('photo', e.target.result); // Save photo data as a Data URL
+    };
+  
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+}
+</script>
+
+</body>
+</html>

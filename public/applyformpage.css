@@ -1,0 +1,343 @@
+@font-face {
+    font-family: 'Lexend Deca-Regular';
+    src: url('/fonts/Lexend_Deca/static/LexendDeca-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Londrina Solid-Regular';
+    src: url('/fonts/Londrina_Solid/LondrinaSolid-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Londrina Solid-Light';
+    src: url('/fonts/Londrina_Solid/LondrinaSolid-Light.ttf');
+}
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/images/CCC BG.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: -1;
+    pointer-events: none;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 50px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar .logo h1 {
+    font-size: 20px;
+    font-family: 'Londrina Solid-Regular';
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #0b1f53;
+    margin: 0;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center; /* Aligns links and icon vertically */
+    gap: 20px; /* Adjust the gap if necessary */
+}
+
+
+.navbar .nav-links a {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Lexend Deca-Regular';
+    color: #0b1f53;
+}
+    #F-internship{
+        background-color: #0b1f53;
+        color: #ffffff;
+        padding: 30px 5px 30px 5px;
+        border-radius: 3px;
+    }
+    #P-internship{
+        color: #0b1f53;
+        padding: 30px 5px 30px 5px;
+    }
+    #user-icon {
+        height: 20px; /* Adjust size as needed */
+        margin-left: 10px; /* Space between icon and the link */
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    #search-icon {
+        height: 20px; /* Adjust size as needed */
+        margin-left: 10px; /* Space between icon and the link */
+        cursor: pointer;
+        vertical-align: middle;
+    }
+
+
+
+.form-container {
+    background-color: white;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+    gap: 20px; /* Space between elements */
+    position: relative;
+    
+}
+
+.form-content {
+    display: flex;
+    gap: 20px; /* Space between form fields and resume section */
+    font-family: 'Lexend Deca-Regular';
+    width: 100%;
+    max-width: 1100px; /* Adjust as needed */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-fields {
+    flex: 2px; /* Take up more space */
+}
+
+
+.resume-section {
+    flex: 1; /* Take up less space */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.resume-container {
+    text-align: left;
+}
+
+/* Styling para sa filename na masyadong mahaba */
+.resume-info span {
+    display: inline-block;
+    max-width: 200px; /* Adjust width as needed to fit the container */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." at the end if the text is too long */
+    vertical-align: middle;
+}
+
+
+
+
+
+.form-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: 'Londrina Solid-Regular';
+    color: #0b1f53;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0;
+    background-color: #0b1f53;
+    transition: width 0.3s ease;
+}
+
+.progress-percentage {
+    font-size: 12px;
+    color: #0b1f53;
+    margin-top: 5px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #0b1f53;
+    font-size: 14px;
+    text-align: left;
+    
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 40px;
+    border: 2px solid #0b1f53;
+    border-radius: 5px;
+    font-family: 'Lexend Deca-Regular';
+    color: #0b1f53;
+    transition: border-color 0.3s;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="email"]:focus,
+.form-container input[type="tel"]:focus {
+    border-color: #003580;
+    outline: none;
+}
+
+/* Style para sa placeholder text sa mga input fields */
+.form-fields input::placeholder,
+.form-fields select::placeholder,
+.resume-section input::placeholder {
+    font-size: 12px; /* Adjust the font size as needed */
+    color: #888888; /* Change the color if needed */
+    font-family: 'Lexend Deca-Regular';
+}
+
+
+.resume-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.resume-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #0b1f53;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.resume-item img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.resume-info {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.resume-info span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #0b1f53;
+}
+
+.resume-info small {
+    display: block;
+    color: #666;
+    font-size: 12px;
+}
+
+.upload-button {
+    background-color: #0b1f53;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lexend Deca-Regular';
+    margin-top: 10px;
+}
+.fixed-button {
+    position: absolute;
+    bottom: 20px; /* Distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lexend Deca-Regular';
+}
+
+.small-button {
+    padding: 8px;
+    font-size: 12px;
+    width: auto;
+    min-width: 150px;
+    font-family: 'Lexend Deca-Regular';
+}
+
+.upload-button:hover {
+    background-color: #003580;
+}
+
+.hidden {
+    display: none;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #0b1f53;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

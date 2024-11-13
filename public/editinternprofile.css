@@ -1,0 +1,232 @@
+@font-face {
+    font-family: 'Lexend Deca-Regular';
+    src: url('/fonts/Lexend_Deca/static/LexendDeca-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Londrina Solid-Regular';
+    src: url('/fonts/Londrina_Solid/LondrinaSolid-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Londrina Solid-Light';
+    src: url('/fonts/Londrina_Solid/LondrinaSolid-Light.ttf');
+}
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/images/CCC BG.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Londrina Solid', sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: -1;
+    pointer-events: none;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 50px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar .logo h1 {
+    font-size: 20px;
+    font-family: 'Londrina Solid-Regular';
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #0b1f53;
+    margin: 0;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center; /* Aligns links and icon vertically */
+    gap: 20px; /* Adjust the gap if necessary */
+}
+
+
+.navbar .nav-links a {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Lexend Deca-Regular';
+    color: #0b1f53;
+}
+    #F-internship{
+        background-color: #0b1f53;
+        color: #ffffff;
+        padding: 30px 5px 30px 5px;
+        border-radius: 3px;
+    }
+    #P-internship{
+        color: #0b1f53;
+        padding: 30px 5px 30px 5px;
+    }
+    #user-icon {
+        height: 20px; /* Adjust size as needed */
+        margin-left: 10px; /* Space between icon and the link */
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    #search-icon {
+        height: 20px; /* Adjust size as needed */
+        margin-left: 10px; /* Space between icon and the link */
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    
+    
+    .container {
+        max-width: 500px;
+        margin-top: 200px;
+        width: 100%;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+        font-family: 'Londrina Solid-Regular';
+        font-size: 24px;
+        color: #0b1f53;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .profile-photo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .photo-preview {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #0b1f53;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        color: #888;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .photo-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .upload-button {
+        background-color: #0b1f53;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    .upload-button input[type="file"] {
+        display: none;
+    }
+    
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #0b1f53;
+        margin-bottom: 5px;
+    }
+    
+    .form-group input, .form-group select {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #f0f0f0;
+        color: #0b1f53;
+        font-size: 14px;
+    }
+    
+    .form-group button {
+        position: absolute;
+        right: 0;
+        top: 5px;
+        padding: 5px 10px;
+        background-color: #0b1f53;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    
+    .submit-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: white;
+        background-color: #0b1f53;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'Lexend Deca-Regular';
+    }
+    
+    .submit-button:hover {
+        background-color: #073a8a;
+    }

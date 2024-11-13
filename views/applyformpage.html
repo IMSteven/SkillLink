@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC - SkillLink</title>
+<link rel="stylesheet" href="/css/applyformpage.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/CCC Logo 1.png" alt="CCC Logo">
+        <h1>CCC - SkillLink</h1>
+    </div>
+    <div class="nav-links">
+        <a href="#" id="F-internship">Find Internship</a>
+        <a href="#" id="P-internship">Post Internship</a>
+        <img src="/images/icons8-user-96.png" alt="User Icon" id="user-icon">
+        <img src="/images/icons8-search-150.png" alt="Search Icon" id="search-icon">
+    </div>
+</div>
+
+<div class="form-container">
+    <h2>Apply for Software Engineer</h2>
+    
+    <!-- Flex container for progress bar, form fields, and resume -->
+    <div class="form-content">
+        <!-- Progress Bar and Form Fields -->
+        <div class="form-fields">
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-percentage" id="progressPercentage">0%</div>
+
+            <!-- Form Fields -->
+            <label for="full-name">Full Name*</label>
+            <input type="text" id="full-name" placeholder="Enter your full name" required oninput="updateProgress()">
+
+            <label for="email">Email Address*</label>
+            <input type="email" id="email" placeholder="Enter your email" required oninput="updateProgress()">
+
+            <label for="phone">Mobile Phone Number*</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number" required oninput="updateProgress()">
+        </div>
+
+        <!-- Resume and MOA Section on the right -->
+        <div class="resume-section">
+            <!-- Resume Section -->
+            <div class="resume-container">
+                <label>Resume</label>
+                <div id="resumePreview" class="resume-item hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="PDF icon">
+                    <div class="resume-info">
+                        <span id="resumeName">Resume.pdf</span>
+                        <small id="resumeSize">19 KB</small>
+                    </div>
+                    <a href="#" id="resumeDownload" download>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Download_icon_-_Font_Awesome.svg/120px-Download_icon_-_Font_Awesome.svg.png" alt="Download" style="width: 24px; height: 24px;">
+                    </a>
+                    <button class="remove-btn" onclick="removeFile('resume')">×</button>
+                </div>
+                <button class="upload-button small-button" onclick="document.getElementById('resumeUpload').click()">Upload Resume</button>
+                <input type="file" id="resumeUpload" class="hidden" accept=".pdf" onchange="handleFileUpload(event, 'resume')">
+                <small>PDF only (2 MB)</small>
+            </div>
+
+            <!-- MOA Section -->
+            <div class="resume-container">
+                <label>Memorandum of Agreement (MOA)</label>
+                <div id="moaPreview" class="resume-item hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="PDF icon">
+                    <div class="resume-info">
+                        <span id="moaName">MOA.pdf</span>
+                        <small id="moaSize">19 KB</small>
+                    </div>
+                    <a href="#" id="moaDownload" download>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Download_icon_-_Font_Awesome.svg/120px-Download_icon_-_Font_Awesome.svg.png" alt="Download" style="width: 24px; height: 24px;">
+                    </a>
+                    <button class="remove-btn" onclick="removeFile('moa')">×</button>
+                </div>
+                <button class="upload-button small-button" onclick="document.getElementById('moaUpload').click()">Upload MOA</button>
+                <input type="file" id="moaUpload" class="hidden" accept=".pdf" onchange="handleFileUpload(event, 'moa')">
+                <small>PDF only (2 MB)</small>
+                
+                <div class="resume-info">
+                    <span id="resumeName"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Application Button -->
+    <button class="upload-button fixed-button" onclick="submitApplication()">Review Application</button>
+</div>
+
+<script>
+    function updateProgress() {
+        const totalFields = 4;
+        let filledFields = 0;
+        
+        if (document.getElementById('full-name').value) filledFields++;
+        if (document.getElementById('email').value) filledFields++;
+        if (document.getElementById('phone').value) filledFields++;
+
+        if (!document.getElementById('resumePreview').classList.contains('hidden')) {
+            filledFields++;
+        }
+
+        if (!document.getElementById('moaPreview').classList.contains('hidden')) {
+            filledFields++;
+        }
+        
+        const progressPercent = Math.min((filledFields / totalFields) * 100, 100); // Cap at 100
+        document.getElementById('progressBar').style.width = progressPercent + '%';
+        document.getElementById('progressPercentage').textContent = `${Math.round(progressPercent)}%`;
+
+    }
+
+    function handleFileUpload(event, type) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Set file preview to visible
+                document.getElementById(type + 'Preview').classList.remove('hidden');
+                document.getElementById(type + 'Name').textContent = file.name;
+                document.getElementById(type + 'Download').href = e.target.result;
+
+                // Store file data in localStorage as a base64 encoded string
+                localStorage.setItem(type + 'Data', e.target.result);
+                localStorage.setItem(type + 'Name', file.name);
+
+                updateProgress();
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function submitApplication() {
+        // Save form data to localStorage
+        localStorage.setItem('fullName', document.getElementById('full-name').value);
+        localStorage.setItem('email', document.getElementById('email').value);
+        localStorage.setItem('phone', document.getElementById('phone').value);
+
+        // Redirect to review page
+        window.location.href = 'reviewapplypage.html';
+    }
+</script>
+</body>
+</html>

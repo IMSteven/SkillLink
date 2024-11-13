@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC - SkillLink</title>
+<link rel="stylesheet" href="/css/postinternshippage.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/CCC Logo 1.png" alt="CCC Logo">
+        <h1>CCC - SkillLink</h1>
+    </div>
+    <div class="nav-links">
+        <a href="#" id="F-internship">Find Internship</a>
+        <a href="#" id="P-internship">Post Internship</a>
+        <img src="/images/icons8-user-96.png" alt="User Icon" id="user-icon">
+        <img src="/images/icons8-search-150.png" alt="Search Icon" id="search-icon">
+    </div>
+</div>
+
+<div class="container">
+  <form id="jobForm">
+      <div class="form-section">
+          <!-- Left Section: Main Form Fields -->
+          <div class="left-section">
+              <div class="form-group">
+                  <label for="companyName">Company Name*</label>
+                  <input type="text" id="companyName" placeholder="Enter company name" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="internship">Internship*</label>
+                  <input type="text" id="internship" placeholder="Enter internship type" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="location">Location*</label>
+                  <input type="text" id="location" placeholder="Enter location" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="industry">Industry*</label>
+                  <input type="text" id="industry" placeholder="Enter industry" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="duration">Duration*</label>
+                  <input type="text" id="duration" placeholder="Enter duration" required>
+              </div>
+          </div>
+
+          <!-- Right Section: Job Qualification, About Us, and Submit Button -->
+          <div class="right-section">
+              <div class="form-group">
+                  <label for="jobQualification">Job Qualification*</label>
+                  <textarea id="jobQualification" placeholder="Enter job qualification" required></textarea>
+              </div>
+
+              <div class="form-group">
+                  <label for="aboutUs">About Us*</label>
+                  <textarea id="aboutUs" placeholder="Enter details about your company" required></textarea>
+              </div>
+
+              <button type="submit" class="submit-button">SUBMIT</button>
+          </div>
+      </div>
+  </form>
+</div>
+
+
+
+  <script>
+    document.getElementById('jobForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get the form data
+      const companyName = document.getElementById('companyName').value;
+      const internship = document.getElementById('internship').value;
+      const location = document.getElementById('location').value;
+      const industry = document.getElementById('industry').value;
+      const duration = document.getElementById('duration').value;
+      const jobQualification = document.getElementById('jobQualification').value;
+      const aboutUs = document.getElementById('aboutUs').value;
+
+      // Store the data in localStorage to pass it to another page
+      localStorage.setItem('companyName', companyName);
+      localStorage.setItem('internship', internship);
+      localStorage.setItem('location', location);
+      localStorage.setItem('industry', industry);
+      localStorage.setItem('duration', duration);
+      localStorage.setItem('jobQualification', jobQualification);
+      localStorage.setItem('aboutUs', aboutUs);
+
+      alert("Data saved to localStorage"); // Confirm data saved
+
+      // Redirect to the display page
+      window.location.href = 'displaypostinternshippage.html';
+    });
+  </script>
+
+</body>
+</html>

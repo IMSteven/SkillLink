@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC - SkillLink</title>
+<link rel="stylesheet" href="internprofile.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/CCC Logo 1.png" alt="CCC Logo">
+        <h1>CCC - SkillLink</h1>
+    </div>
+    <div class="nav-links">
+        <a href="#" id="F-internship">Find Internship</a>
+        <a href="#" id="P-internship">Post Internship</a>
+        <img src="/images/icons8-user-96.png" alt="User Icon" id="user-icon">
+        <img src="/images/icons8-search-150.png" alt="Search Icon" id="search-icon">
+    </div>
+</div>
+
+
+
+<div class="container">
+  <form action="/api/interns/register" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
+
+    <div class="form-section">
+      <!-- Profile Photo Upload -->
+      <div class="profile-photo">
+        <div class="photo-preview" id="photo-preview">
+          <span>Upload Photo</span>
+        </div>
+        <label class="upload-button">
+          <input name="photo" type="file" id="photo-upload" accept="image/*" onchange="previewPhoto()">
+          Upload Your Photo
+        </label>
+      </div>
+
+      <!-- Personal Information Fields -->
+      <div class="form-group1">
+        <label for="full-name">Full name*</label>
+        <input type="text" id="full-name" placeholder="Enter your full name" name="fullName" required>
+      </div>
+
+      <div class="form-group1">
+        <label for="email">CCC email account*</label>
+        <input type="email" id="email" placeholder="Enter your email" name="email" required>
+      </div>
+
+      <div class="form-group1">
+        <label for="password">Password*</label>
+        <input type="password" id="password" placeholder="Enter your password" name="password" required>
+      </div>
+
+      <div class="form-group1">
+        <label for="confirm-password">Confirm Password*</label>
+        <input type="password" id="confirm-password" placeholder="Confirm your password" name="confirmPassword" required>
+      </div>
+
+      <!-- Program and Year Level Selection -->
+      <div class="form-group2">
+        <label for="program">Program*</label>
+        <select id="program" name="program" required>
+          <option value="">Choose your Program</option>
+          <option value="Bachelor of Science in Psychology">Bachelor of Science in Psychology</option>
+          <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
+          <option value="Bachelor of Science in Accountancy">Bachelor of Science in Accountancy</option>
+          <option value="Bachelor of Science in Accounting Information System">Bachelor of Science in Accounting Information System</option>
+          <option value="Bachelor of Elementary Education">Bachelor of Elementary Education</option>
+          <option value="Bachelor of Secondary Education Major in English">Bachelor of Secondary Education Major in English</option>
+          <option value="Bachelor of Secondary Education Major in Mathematics">Bachelor of Secondary Education Major in Mathematics</option>
+          <option value="Bachelor of Secondary Education Major in Science">Bachelor of Secondary Education Major in Science</option>
+        </select>
+      </div>
+      
+
+      <div class="form-group2">
+        <label for="year-level">Year Level*</label>
+        <select id="year-level" name="yearLevel" required>
+          <option value="">Choose Year level</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      
+    </div>
+
+
+
+    <div class="form-section">
+        <!-- File Uploads -->
+        <div class="form-group3">
+          <label>Resume (PDF only)*</label>
+          <div class="upload-file">
+            <input name="resume" type="file" id="resume-upload" accept="application/pdf" required onchange="showFileName('resume-upload', 'resume-preview')">
+            <span class="file-preview" id="resume-preview">No file chosen</span>
+            <label class="upload-button" for="resume-upload">Choose File</label>
+          </div>
+        </div>
+
+        <div class="form-group3">
+          <label>Memorandum of Agreement (PDF only)*</label>
+          <div class="upload-file">
+            <input name="agreement" type="file" id="moa-upload" accept="application/pdf" required onchange="showFileName('moa-upload', 'moa-preview')">
+            <span class="file-preview" id="moa-preview">No file chosen</span>
+            <label class="upload-button" for="moa-upload">Choose File</label>
+          </div>
+        </div>
+
+        <!-- Skills Section -->
+        <fieldset class="form-group4">
+          <legend>Skills*</legend>
+          <label><input type="checkbox" name="skills" value="hardware"> Hardware and Software Troubleshooting</label>
+          <label><input type="checkbox" name="skills" value="web-development"> Web Development</label>
+          <label><input type="checkbox" name="skills" value="networking"> Networking</label>
+          <label><input type="checkbox" name="skills" value="software-development"> Software Development</label>
+          <label><input type="checkbox" name="skills" value="database-management"> Database Management</label>
+          <label><input type="checkbox" name="skills" value="cybersecurity"> Cybersecurity</label>
+          <label><input type="checkbox" name="skills" value="cloud-computing"> Cloud Computing</label>
+          <label><input type="checkbox" name="skills" value="project-management"> Project Management</label>
+          
+          <!-- Other option with a text input to specify additional skills -->
+          <label>
+            <input type="checkbox" id="other-skill-checkbox" name="skills" value="other"> Other:
+            <input type="text" id="other-skill" name="other-skill" placeholder="Specify other skill" disabled>
+          </label>
+        </fieldset>
+
+        <!-- Signup Button -->
+        <button type="submit" class="submit-button">SIGN UP</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function showFileName(inputId, previewId) {
+      const input = document.getElementById(inputId);
+      const preview = document.getElementById(previewId);
+      preview.textContent = input.files.length > 0 ? input.files[0].name : "No file chosen";
+    }
+
+    function validateForm() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false; // Prevent form submission
+      }
+      return true; // Allow form submission
+    }
+
+    document.getElementById('other-skill-checkbox').addEventListener('change', function() {
+    const otherSkillInput = document.getElementById('other-skill');
+    otherSkillInput.disabled = !this.checked; // Enable input when checkbox is checked
+    if (!this.checked) {
+      otherSkillInput.value = ''; // Clear the input if it's disabled
+    }
+  });
+  </script>
+
+</body>
+</html>

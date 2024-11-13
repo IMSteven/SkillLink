@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC - SkillLink</title>
+<link rel="stylesheet" href="/css/internshipsearch.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/CCC Logo 1.png" alt="CCC Logo">
+        <h1>CCC - SkillLink</h1>
+    </div>
+    <div class="nav-links">
+        <a href="#" id="F-internship">Find Internship</a>
+        <a href="#" id="P-internship">Post Internship</a>
+        <img src="/images/icons8-user-96.png" alt="User Icon" id="user-icon">
+        <img src="/images/icons8-search-150.png" alt="Search Icon" id="search-icon">
+    </div>
+</div>
+
+<div class="search-container">
+    <h2>Find Internship</h2>
+    <input type="text" id="title" placeholder="Internship Type" />
+    <input type="text" id="industry" placeholder="Industry" />
+    <input type="text" id="location" placeholder="Location" />
+    <div class="radius-display" id="radiusDisplay">Radius: 5 Kilometers</div>
+    <input type="range" id="radius" min="1" max="50" value="5" oninput="updateRadiusDisplay()" />
+    <button onclick="searchInternships()">SEARCH</button>
+</div>
+
+<script>
+    function updateRadiusDisplay() {
+        const radius = document.getElementById('radius').value;
+        document.getElementById('radiusDisplay').innerText = `Radius: ${radius} Kilometers`;
+    }
+
+
+    function searchInternships() {
+    const title = document.getElementById('title').value;
+    const location = document.getElementById('location').value;
+    const radius = document.getElementById('radius').value;
+
+    alert(`Searching for internships:\nTitle: ${title}\nLocation: ${location}\nRadius: ${radius} Kilometers`);
+    }
+
+</script>
+
+
+</body>
+</html>

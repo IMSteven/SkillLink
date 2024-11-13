@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC - SkillLink</title>
+<link rel="stylesheet" href="/css/displaypostinternshippage.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/CCC Logo 1.png" alt="CCC Logo">
+        <h1>CCC - SkillLink</h1>
+    </div>
+    <div class="nav-links">
+        <a href="#" id="F-internship">Find Internship</a>
+        <a href="#" id="P-internship">Post Internship</a>
+        <img src="/images/icons8-user-96.png" alt="User Icon" id="user-icon">
+        <img src="/images/icons8-search-150.png" alt="Search Icon" id="search-icon">
+    </div>
+</div>
+
+<div class="container">
+    <h2>Job Application Details</h2>
+    <div class="form-group">
+      <strong>Company Name:</strong>
+      <p id="displayCompanyName">No data</p>
+    </div>
+    <div class="form-group">
+      <strong>Internship:</strong>
+      <p id="displayInternship">No data</p>
+    </div>
+    <div class="form-group">
+      <strong>Location:</strong>
+      <p id="displayLocation">No data</p>
+    </div>
+    <div class="form-group">
+      <strong>Industry:</strong>
+      <p id="displayIndustry">No data</p>
+    </div>
+    <div class="form-group">
+      <strong>Duration:</strong>
+      <p id="displayDuration">No data</p>
+    </div>
+    <div class="form-group">
+      <strong>Job Qualification:</strong>
+      <p id="displayJobQualification">No data</p>
+    </div>
+    <div class="form-group">
+      <strong>About Us:</strong>
+      <p id="displayAboutUs">No data</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const companyName = localStorage.getItem('companyName');
+      const internship = localStorage.getItem('internship');
+      const location = localStorage.getItem('location');
+      const industry = localStorage.getItem('industry');
+      const duration = localStorage.getItem('duration');
+      const jobQualification = localStorage.getItem('jobQualification');
+      const aboutUs = localStorage.getItem('aboutUs');
+
+      // Logging for debugging
+      console.log("Company Name:", companyName);
+      console.log("Internship:", internship);
+      console.log("Location:", location);
+      console.log("Industry:", industry);
+      console.log("Duration:", duration);
+      console.log("Job Qualification:", jobQualification);
+      console.log("About Us:", aboutUs);
+
+      // Set text content or fallback to "No data"
+      document.getElementById('displayCompanyName').textContent = companyName || "No data";
+      document.getElementById('displayInternship').textContent = internship || "No data";
+      document.getElementById('displayLocation').textContent = location || "No data";
+      document.getElementById('displayIndustry').textContent = industry || "No data";
+      document.getElementById('displayDuration').textContent = duration || "No data";
+      document.getElementById('displayJobQualification').textContent = jobQualification || "No data";
+      document.getElementById('displayAboutUs').textContent = aboutUs || "No data";
+    });
+  </script>
+
+</body>
+</html>
