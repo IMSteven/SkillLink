@@ -23,38 +23,42 @@
 
 <div class="login-container">
     <h2>Login to your Account</h2>
-    <form method="POST" id="loginForm">
-        <input type="email" placeholder="Email" id="email" required>
-        <input type="password" placeholder="Password" id="password" required>
+    <form id="loginForm" method="POST">
+        <input name="email" type="email" placeholder="Email" id="email" required>
+        <input name="password" type="password" placeholder="Password" id="password" required>
         <button type="submit">Login</button>
     </form>
     <p>You don't have an account? <a href="internprofile">Sign Up now!</a></p>
 </div>
 
 <script>
-document.getElementById("loginForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", async function (event) {
+  event.preventDefault(); // Prevent the default form submission
 
-            // Get values from form fields
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-            // Send login request
-            try {
-                const response = await fetch('http://localhost:3000/api/interns/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json' // This tells the server you're sending JSON
-                    },
-                    body: JSON.stringify({ email, password }) // Convert data to JSON format
-                });
+  try {
+    const response = await fetch("/api/interns/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
-                const data = await response.json();
-                console.log(data); // Handle the response data
-            } catch (error) {
-                console.error('Error:', error); // Handle errors
-            }
-        });
+    const data = await response.json();
+
+    if (response.ok && data.redirectUrl) {
+      window.location.href = data.redirectUrl; // Redirect to the specified URL
+    } else {
+      console.error("Error:", data.message);
+      alert(data.message); // Show an alert with the error message
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
+  }
+});
 
 </script>
 

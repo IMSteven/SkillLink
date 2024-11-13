@@ -62,18 +62,32 @@ exports.registerIntern = [
 exports.loginIntern = async (req, res) => {
   const { email, password } = req.body;
 
-  console.log("Request Body:", req.body);
+  console.log("Request Body:", req.body); // Log the request body to ensure data is being received
 
   try {
     const intern = await Intern.findOne({ email: new RegExp(`^${email}$`, 'i') });
-    if (!intern) return res.status(400).json({ message: 'Intern not found' });
+    if (!intern) {
+      console.log("Intern not found");
+      // Return early if intern is not found
+      return res.status(400).json({ message: 'Intern not found' });
+    }
 
     const isPasswordCorrect = await bcrypt.compare(password, intern.password);
-    if (!isPasswordCorrect) return res.status(400).json({ message: 'Invalid password' });
+    if (!isPasswordCorrect) {
+      console.log("Invalid password");
+      // Return early if password is incorrect
+      return res.status(400).json({ message: 'Invalid password' });
+    }
 
-    const token = jwt.sign({ id: intern._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.status(200).json({ token, intern });
+    console.log("Login successful, redirecting to internshiplists");
+// Send JSON response with redirect URL
+    return res.json({ message: "Login successful", redirectUrl: "/internshiplists" });
   } catch (error) {
-    res.status(500).json({ message: 'Error logging in' });
+    console.error("Error logging in:", error);
+    // Ensure only one response is sent in case of error
+    if (!res.headersSent) {
+      return res.status(500).json({ message: 'Error logging in' });
+    }
   }
 };
+

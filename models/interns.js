@@ -8,8 +8,9 @@ const internSchema = new mongoose.Schema({
   program: { type: String, required: true },
   yearLevel: { type: Number, required: true },
   skills: { type: [String], required: true }, // Array of skills
+  photo: { type: String },
   resume: { type: String }, // Path to resume file
-  moa: { type: String }, // Path to MOA file
+  agreement: { type: String }, // Path to MOA file
   createdAt: { type: Date, default: Date.now }
 });
 
