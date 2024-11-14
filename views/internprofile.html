@@ -24,7 +24,7 @@
 
 
 <div class="container">
-  <form action="/api/interns/register" method="POST" enctype="multipart/form-data">
+  <form action="/api/interns/register" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
 
     <div class="form-section">
       <!-- Profile Photo Upload -->
@@ -203,6 +203,28 @@ programSelect.addEventListener("change", function() {
 if (programSelect.value) {
   updateSkillsCheckboxes(programSelect.value);
 }
+
+    // New function for previewing the uploaded photo
+    function previewPhoto() {
+        const file = document.getElementById('photo-upload').files[0];
+        const preview = document.getElementById('photo-preview');
+        preview.innerHTML = ''; // Clear existing preview content
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = 'Uploaded Photo';
+                img.style.width = '100px'; // Adjust width as needed
+                img.style.height = '100px'; // Adjust height as needed
+                preview.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        } else {
+            preview.innerHTML = '<span>Upload Photo</span>'; // Default message
+        }
+    }
 
   </script>
 

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC - SkillLink</title>
+<link rel="stylesheet" href="/css/internprofile.css">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/CCC Logo 1.png" alt="CCC Logo">
+        <h1>CCC - SkillLink</h1>
+    </div>
+    <div class="nav-links">
+        <a href="#" id="F-internship">Find Internship</a>
+        <a href="#" id="P-internship">Post Internship</a>
+        <img src="/images/icons8-user-96.png" alt="User Icon" id="user-icon">
+        <img src="/images/icons8-search-150.png" alt="Search Icon" id="search-icon">
+    </div>
+</div>
+
+<div class="container">
+    <!-- Signup Form Section -->
+    <form action="submit_form_url" method="POST" onsubmit="return validateForm()">
+      <div class="form-section">
+        <!-- Profile Photo Upload -->
+        <div class="profile-photo">
+          <div class="photo-preview" id="photo-preview">
+            <span>Upload Photo</span>
+          </div>
+          <label class="upload-button">
+            <input type="file" id="photo-upload" accept="image/*" onchange="previewPhoto()">
+            Upload Your Photo
+          </label>
+        </div>
+
+        <!-- Personal Information Fields -->
+        <div class="form-group1">
+          <label for="full-name">Company Name*</label>
+          <input type="text" id="full-name" placeholder="Enter company name" required>
+        </div>
+
+        <div class="form-group1">
+          <label for="email">Company email account*</label>
+          <input type="email" id="email" placeholder="Enter company email" required>
+        </div>
+
+        <div class="form-group1">
+          <label for="password">Password*</label>
+          <input type="password" id="password" placeholder="Enter a password" required>
+        </div>
+
+        <div class="form-group1">
+          <label for="confirm-password">Confirm Password*</label>
+          <input type="password" id="confirm-password" placeholder="Confirm the password" required>
+        </div>
+
+        <div class="form-group1">
+            <label for="company-website">Company Website*</label>
+            <input type="url" id="company-website" placeholder="https://www.example.com" required>
+        </div>
+
+        <div class="form-group1">
+            <label for="company-address">Company address9 </label>
+            <input type="password" id="company-address" placeholder="Enter company address" required>
+          </div>
+  
+      
+    </form>
+
+    <button type="submit" class="submit-button">SIGN UP</button>
+</div>
+
+
+  <script>
+    function showFileName(inputId, previewId) {
+      const input = document.getElementById(inputId);
+      const preview = document.getElementById(previewId);
+      preview.textContent = input.files.length > 0 ? input.files[0].name : "No file chosen";
+    }
+
+    function validateForm() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false; // Prevent form submission
+      }
+      return true; // Allow form submission
+    }
+
+
+  </script>
+
+</body>
+</html>
